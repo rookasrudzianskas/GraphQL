@@ -31,7 +31,9 @@ const BookType = new GraphQLObjectType({
     name: 'Book',
     description: 'This represents a book written by the author',
     fields: () => ({
-        id: { type: GraphQLInt }
+        id: { type: GraphQLNonNull(GraphQLInt) },
+        name: { type: GraphQLNonNull(GraphQLString) },
+        authorId: { type: GraphQLNonNull(GraphQLInt) },
     })
 })
 
@@ -47,6 +49,10 @@ const RootQueryType = new GraphQLObjectType({
             resolve: () => books
         }
     })
+})
+
+const schema = new GraphQLSchema({
+    query: RootQueryType,
 })
 
 app.use('/graphql', graphqlHTTP({
