@@ -27,6 +27,13 @@ const books = [
     { id: 8, name: 'Beyond the Shadows', authorId: 3 }
 ]
 
+const BookType = new GraphQLObjectType({
+    name: 'Book',
+    description: 'This represents a book written by the author',
+    fields: () => ({
+        id: { type: GraphQLInt }
+    })
+})
 
 
 
